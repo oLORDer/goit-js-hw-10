@@ -37,7 +37,6 @@ function renderCounry(countries) {
 
   if (countries.length === 1) {
     foundCountry(countries);
-    console.log(countries)
   }
 }
 
@@ -57,33 +56,27 @@ function foundCountries(countriesInfo) {
   countryList.innerHTML = arr.join('');
 }
 
-function foundCountry(country) {
-  let arr = [];
-  country.map(el =>  {
-    let langs = Object.values(el.languages)
-    arr.push(
+function foundCountry(obj) {
+  const country = obj[0];
+  countryInfo.innerHTML =
       `
       <ul class="country-list">
         <li class="flex">
-          <img class="image" src=${el.flags.svg} width="40" heigh="20"/>
-          <p>${el.name.common}</p>
+          <img class="image" src=${country.flags.svg} width="40" heigh="20"/>
+          <p>${country.name.common}</p>
         </li>
         <li>
-          <p><b>Capital:</b> ${el.capital}</p>
+          <p><b>Capital:</b> ${country.capital}</p>
         </li>
         <li>
-          <p><b>Population:</b> ${el.population}</p>
+          <p><b>Population:</b> ${country.population}</p>
         </li>
         <li>
-          <p><b>Languages:</b> ${langs}</p>
+          <p><b>Languages:</b> ${Object.values(country.languages).join(', ')}</p>
         </li>
       </ul>
       `
-    )
-  }
-  );
-
-  countryInfo.innerHTML = arr.join('');
+  ;
 }
 
 function errorCountry(error) {
