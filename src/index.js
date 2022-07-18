@@ -8,8 +8,6 @@ const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
 const input = document.querySelector('#search-box');
 
-// 'aruba'
-
 input.addEventListener('input', Debounce(findCountry, DEBOUNCE_DELAY));
 
 function findCountry(e) {
